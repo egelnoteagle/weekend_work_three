@@ -3,22 +3,28 @@
 # the first string, and false otherwise.
 
 def mutation?(base_word, mutation)
-  mutation.each_char do |letter|
+  mutation_array = mutation.split(//)
+  compare = []
+
+  mutation_array.each do |letter|
     if base_word.include?(letter)
-      return true
-    else
-      return false   
-    end
+      compare << letter
+    end  
+  end
+  if compare == mutation_array
+    true
+  else
+    false
   end  
 end
 
-# Driver code - don't touch anything below this line.
-puts "TESTING mutation?..."
-puts
+# # Driver code - don't touch anything below this line.
+# puts "TESTING mutation?..."
+# puts
 
 result = mutation?("burly", "ruby")
 
-puts "Your method returned:"
+puts "Your method returned:" 
 puts result
 puts
 

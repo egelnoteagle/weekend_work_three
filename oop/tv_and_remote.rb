@@ -24,48 +24,49 @@ end
 class Remote
   attr_accessor :tv
 
-  def initialize(tv_status)
-    @tv = tv_status[:tv]
+  def initialize(television)
+    @tv = television
   end
 
   def toggle_power
-    if @power == "on"
-      @power = "off"
+    if tv.power == "on"
+      tv.power = "off"
     else
-      @power = "on"
+      tv.power = "on"
     end    
   end
 
   def increment_volume
-    @volume += 1
+    tv.volume += 1
   end
 
   def decrement_volume
-    @volume -= 1
+    tv.volume -= 1
   end
 
   def set_channel(new_channel)
-    @channel = new_channel
+    tv.channel = new_channel
   end
 end
 
 #------Driver Code---------------------------------  
 
 tv_one = Tv.new(power: "off", volume: 1, channel: 3)
+remote_one = Remote.new(tv_one)
 
 puts tv_one.power
 puts tv_one.channel
 puts tv_one.volume
 puts
 
-tv_one.toggle_power
+remote_one.toggle_power
 if tv_one.power == "on"
   puts "Pass"
 else
   puts "Fail"
 end  
 
-tv_one.increment_volume
+remote_one.increment_volume
 if tv_one.volume == 2
   puts "Pass"
 else
